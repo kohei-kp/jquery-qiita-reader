@@ -9,7 +9,13 @@ $(() => {
 
 function bindEvents () {
   $('.post-list').on('click', '.post-list-row', e => {
-    const postId = $(e.target).attr('data-post-id')
+    const $row = $(e.target)
+
+    const $postList = $('.post-list')
+    $postList.children('li').removeClass('highlight')
+    $row.addClass('highlight')
+
+    const postId = $row.attr('data-post-id')
     const selectedPost = store.qiitaPostlist.find(post => postId === post.id) || {}
 
     let postTitle = ''
