@@ -11,8 +11,8 @@ function bindEvents () {
   $('.post-list').on('click', '.post-list-row', e => {
     const $row = $(e.target)
 
-    const $postList = $('.post-list')
-    $postList.children('li').removeClass('highlight')
+    const $postList = $('.post-list ul li')
+    $postList.removeClass('highlight')
     $row.addClass('highlight')
 
     const postId = $row.attr('data-post-id')
