@@ -22,3 +22,20 @@
   background: rgba(0, 200, 255, .5);
   cursor: pointer;
 }
+
+.post-info {
+  display: flex;
+}
+.post-info div {
+  margin: 0 5px;
+  line-height: 32px;
+}
+
+
+.tags .tag {
+  background-color: #eee;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+}

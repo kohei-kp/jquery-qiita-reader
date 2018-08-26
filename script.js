@@ -14,8 +14,6 @@ $(async () => {
   const $ul = $('.post-list ul')
   $ul.children('li').remove()
   $ul.append(postList)
-
-
 })
 
 function bindEvents () {
@@ -23,12 +21,38 @@ function bindEvents () {
     const postId = $(e.target).attr('data-post-id')
     const selectedPost = store.qiitaPostlist.find(post => postId === post.id) || {}
 
-    const renderedBody = selectedPost.hasOwnProperty('rendered_body')
-      ? selectedPost.rendered_body
-      : ''
+    let postTitle = ''
+    let renderedBody = ''
+    let createdAt = ''
+    let userName = ''
+    let userImage = ''
+    let tags = []
+    if (Object.keys(selectedPost)) {
+      postTitle = selectedPost.title
+      renderedBody = selectedPost.rendered_body
+      tags = selectedPost.tags
+      userId = selectedPost.user.id
+      userImageUrl = selectedPost.user.profile_image_url
+      createdAt = selectedPost.created_at + 'に投稿'
+    }
 
+    const $userName = $('.user-name')
+    const $userImage = $('.user-image')
+    const $createdAt = $('.post-date')
+    const $tags = $('.tags')
+    const $postTitle = $('.post-title')
     const $postContent = $('.post-content')
-    $postContent.children().remove()
+
+    $userImage.children('img').remove()
+    $userImage.append(`<img src="${userImageUrl}" width="32" height="32">`)
+
+    $userName.text(userId)
+    $createdAt.text(createdAt)
+
+    $tags.children('span').remove()
+    $tags.append(tags.map(tag => `<span class="tag">${tag.name}</span>`))
+
+    $postTitle.text(postTitle)
     $postContent.html(renderedBody)
   })
 }
