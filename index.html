@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Qiita Reader</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="./script.js"></script>
+</head>
+<body>
+ <div id="app">
+  <div class="grid">
+    <div style="grid-column: 1 / 2; border: 1px solid #ccc;">
+      <div class="search-form">
+        <label for="search-text"></label>
+        <input type="text" id="search-text">
+        <button>検索</button>
+      </div>
+      <h1>記事一覧</h1>
+      <div class="post-list">
+        <ul>
+          <li class="post-list-row">Sample Sample Sample1</li>
+          <li class="post-list-row">Sample Sample Sample2</li>
+          <li class="post-list-row">Sample Sample Sample3</li>
+          <li class="post-list-row">Sample Sample Sample4</li>
+          <li class="post-list-row">Sample Sample Sample5</li>
+        </ul>
+      </div>
+    </div>
+    <div style="grid-column: 2 / 3; border: 1px solid #ccc;">
+      <h1>記事内容</h1>
+      <div class="post-content">
+        Sample Sample Sample
+      </div>
+    </div>
+  </div>
+</div> 
+</body>
+</html>
+
