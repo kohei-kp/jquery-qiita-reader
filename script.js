@@ -2,18 +2,9 @@ const store = {
   qiitaPostlist: [{}]
 }
 
-$(async () => {
+$(() => {
   bindEvents()
-
-  store.qiitaPostlist = await getQiitaPost()
-
-  const postList = store.qiitaPostlist.map(post => {
-    return `<li class="post-list-row" data-post-id="${post.id}">${post.title}</li>`
-  })
-
-  const $ul = $('.post-list ul')
-  $ul.children('li').remove()
-  $ul.append(postList)
+  renderPostList()
 })
 
 function bindEvents () {
@@ -55,8 +46,23 @@ function bindEvents () {
     $postTitle.text(postTitle)
     $postContent.html(renderedBody)
   })
+
+  $('.refresh-button').on('click', e => {
+    renderPostList()
+  })
 }
 
+async function renderPostList() {
+  store.qiitaPostlist = await getQiitaPost()
+
+  const postList = store.qiitaPostlist.map(post => {
+    return `<li class="post-list-row" data-post-id="${post.id}">${post.title}</li>`
+  })
+
+  const $ul = $('.post-list ul')
+  $ul.children('li').remove()
+  $ul.append(postList)
+}
 
 function getQiitaPost(page = 1, perPage = 20) {
   return $.ajax({
