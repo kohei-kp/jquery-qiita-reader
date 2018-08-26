@@ -12,8 +12,8 @@ function bindEvents () {
     const $row = $(e.target)
 
     const $postList = $('.post-list ul li')
-    $postList.removeClass('highlight')
-    $row.addClass('highlight')
+    $postList.removeClass('my-highlight')
+    $row.addClass('my-highlight')
 
     const postId = $row.attr('data-post-id')
     const selectedPost = store.qiitaPostlist.find(post => postId === post.id) || {}
